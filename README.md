@@ -1,12 +1,12 @@
 # Heart Disease Prediction API
 
 
-This repository contains source code of our project for Provathon.  Heart Disease Prediction API is Machine Learning Based Solution to predict risks of heart disease using a integrable api.
+This repository contains source code of our project for Provathon.  Heart Disease Prediction API is Machine Learning based solution to predict risks of heart disease using a integrable API.
 
 
 # Description
 
-Our solution is based on microservices architecture and the AI Model can be independently used in any other platform with ease. We've also included a simple demo hospital management system to show how the API works and how you can use our AI Model an web app together.
+Our solution is based on microservices architecture and the AI Model can be independently used in any other platform with ease. We've also included a simple demo hospital management system to show how the API works and how you can use our AI Model on a web app together.
 Whenever you submit your data to our AI Model, it'll detect and tell you if the patient has the risk of heart disease.
 
 ## Technical Aspect
