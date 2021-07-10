@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="wnameth=device-wnameth, initial-scale=1.0">
+    <title>Cardiac Arrest Predicion</title>
+    <link rel="stylesheet" href="css/index-style.css">
+</head>
+
+<body>
+    <div class="informations">
+        <p class="heading">Cardiac Arrest Detection</p>
+        <p class="info"> This is a demo model of a hospital management system
+        </p>
+    </div>
+    <div class="data-entry">
+        <p class="heading">Enter your details</p>
+        <form action="/" method="POST" id="details">
+
+            <div class="entry">
+                <label for="age">Enter your age:</label>
+                <input type="text" name="age">
+            </div>
+
+            <div class="entry">
+                <label for="sex">Select your gender: </label>
+                <input type="text" name="sex">
+            </div>
+
+            <div class="entry">
+                <label for="chestpain">Enter your chestpain severity:</label>
+                <input type="text" name="chestpain">
+            </div>
+
+            <div class="entry">
+                <label for="bp">Enter your bloodpressure:</label>
+                <input type="text" name="bp">
+            </div>
+
+            <div class="entry">
+                <label for="cholestrol">Enter your cholestrol level:</label>
+                <input type="text" name="cholestrol">
+            </div>
+
+            <div class="entry">
+                <label for="sugar">Enter your sugar level:</label>
+                <input type="text" name="sugar">
+            </div>
+
+            <div class="entry">
+                <label for="ecg">Enter your ecg level:</label>
+                <input type="text" name="ecg">
+            </div>
+
+            <div class="entry">
+                <label for="heartrate">Enter your heartrate:</label>
+                <input type="text" name="heartrate">
+            </div>
+
+            <div class="entry">
+                <label for="angina">Coose your angina type:</label>
+                <input type="text" name="angina">
+            </div>
+
+            <div class="entry">
+                <label for="depression">Choose your depression level</label>
+                <input type="text" name="depression">
+            </div>
+
+            <div class="entry">
+                <label for="slope">Enter the slope value:</label>
+                <input type="text" name="slope">
+            </div>
+
+            <div class="entry">
+                <label for="vessels">Enter your vessels value</label>
+                <input type="text" name="vessels">
+            </div>
+
+            <div class="entry">
+                <label for="thalassemia">Enter your thalassemia value</label>
+                <input type="text" name="thalassemia">
+            </div>
+
+            <div class="entry">
+                <label for="complications">Enter any complications</label>
+                <input type="text" name="complications">
+            </div>
+        </form>
+        <div class="entry submit"><button type="submit" form="details">SUBMIT</button></div>
+        
+
+
+    </div>
+
+
+        <div class="result">
+            <p class="heading">Result</p>
+            <p class="prediction">You have 100% chance of getting a cardiac arrest.</p>
+        </div>
+</body>
+
+</html>
