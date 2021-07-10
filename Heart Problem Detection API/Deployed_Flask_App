@@ -39,15 +39,12 @@ def region():
     if pred > 0.75:
         response['status'] = "success"
         response['value'] = str(pred)
-        response['vernarabilty'] = True
+        response['risk'] = True
     else:
         response['status'] = "success"
         response['value'] = str(pred)
-        response['vernarabilty'] = False
+        response['risk'] = False
 
     return jsonify(response)
 
-
-app.run(host='localhost', port=5001)
-
-# app.run(host='0.0.0.0', port=80)
+app.run(host='0.0.0.0', port=80)
