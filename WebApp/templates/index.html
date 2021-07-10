@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="wnameth=device-wnameth, initial-scale=1.0">
+    <title>Cardiac Arrest Predicion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/index-style.css') }}">
+</head>
+
+<body>
+    <div class="informations">
+        <p class="heading">Cardiac Arrest Detection</p>
+        <p class="info">This is a demo model of a hospital management system. This demo websit is made to demonstrate
+            the working of our model.
+        </p>
+    </div>
+  
+    <div class="data-entry">
+        <p class="heading">Enter patient's details</p>
+        <form action="/" method="POST" id="details">
+
+            <!-- <div class="entry">
+                <label for="age">Enter patient's age:</label>
+                <input type="number" min="0" name="age" placeholder="Enter the age" required>
+            </div> -->
+
+            <div class="entry">
+                <label for="sex">Select patient's sex: </label>
+                <select name="sex" id="sex" required>
+                    <option value="" disabled selected hidden>Choose the sex</option>
+                    <option value="0">Male</option>
+                    <option value="1">Female</option>
+                </select>
+            </div>
+
+            <div class="entry">
+                <label for="chestpain">Choose patient's chestpain severity:</label>
+                <select name="chestpain" id="chestpain" required>
+                    <option value="" disabled selected hidden>Choose chestpain severity</option>
+                    <option value="1">Type 1 - Typical angina</option>
+                    <option value="2">Type 2 - Atypical angina</option>
+                    <option value="3">Type 3 - Non — anginal pain</option>
+                    <option value="4">Type 4 - Asymptotic</option>
+                </select>
+            </div>
+
+            <div class="entry">
+                <label for="bp">Enter patient's bloodpressure:</label>
+                <input type="text" name="bp" placeholder="Enter the bloodpressure" required>
+            </div>
+
+            <div class="entry">
+                <label for="cholestrol">Enter patient's cholestrol level:</label>
+                <input type="text" name="cholestrol" placeholder="Enter the cholestrol level" required>
+            </div>
+
+            <!-- <div class="entry">
+                <label for="sugar">Enter patient's sugar level:</label>
+                <input type="text" name="sugar" placeholder="Enter the sugar level" required>
+            </div> -->
+
+            <!-- <div class="entry">
+                <label for="ecg">Choose patient's ecg level:</label>
+                <select name="ecg" id="ecg" required>
+                    <option value="" disabled selected hidden>Choose ECG level</option>
+                    <option value="0">Normal</option>
+                    <option value="1">Having ST-T wave abnormality</option>
+                    <option value="2">Left ventricular hyperthrophy</option>
+                </select>
+            </div> -->
+
+            <div class="entry">
+                <label for="heartrate">Enter patient's heartrate:</label>
+                <input type="text" name="heartrate" placeholder="Enter the max heartrate" required>
+            </div>
+
+            <div class="entry">
+                <label for="angina">Chose patient's angina type:</label>
+                <select name="angina" id="angina" required>
+                    <option value="" disabled selected hidden>Choose exercise induced angina</option>
+                    <option value="0">Yes</option>
+                    <option value="1">No</option>
+                </select>
+            </div>
+
+            <div class="entry">
+                <label for="depression">Choose patient's depression level:</label>
+                <input type="text" name="depression" required
+                    placeholder="Enter depression induced by exercise relative to rest"
+                    style="font-size: 12px; width: 280px;">
+            </div>
+
+            <div class="entry">
+                <label for="slope">Choose patient's ST segment slope value:</label>
+                <select name="slope" id="slope" required>
+                    <option value="" disabled selected hidden>Choose ST segment slope</option>
+                    <option value="0">Upsloping</option>
+                    <option value="1">Flat</option>
+                    <option value="2">Downsloping</option>
+                </select>
+
+            </div>
+
+            <div class="entry">
+                <label for="vessels">Choose patient's vessels value:</label>
+                <input type="number" name="vessels" min="0" max="3" required
+                    placeholder="Number of major vessels (0–3) colored by flourosopy"
+                    style="width: 305px; font-size: 12.5px;">
+            </div>
+
+            <div class="entry">
+                <label for="thalassemia">Choose patient's thalassemia value</label>
+                <select name="thalassemia" id="thalassemia" required>
+                    <option value="" disabled selected hidden>Choose thalassemia value</option>
+                    <option value="1">Normal</option>
+                    <option value="2">Fixed Defect</option>
+                    <option value="3">Reversible Defect</option>
+                </select>
+            </div>
+
+            <!-- <div class="entry">
+                <label for="complications">Choose complications</label>
+                <select name="complications" id="complications" required>
+                    <option value="" disabled selected hidden>Choose heart complications</option>
+                    <option value="0">Not Present</option>
+                    <option value="1">Present</option>
+                </select>
+            </div> -->
+        </form>
+        <div class="entry submit"><button type="submit" form="details">SUBMIT</button></div>
+    </div>
+
+    {% if data.success %}
+    <div class="result {{data.class}} ">
+        <p class="heading">Result</p>
+        <p class="prediction">You have {{data.prediction}}% chance of getting a cardiac arrest.</p>
+    </div>
+    {% endif %}
+</body>
+
+</html>
