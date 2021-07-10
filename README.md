@@ -23,15 +23,16 @@ Whenever you submit your data to our AI Model, it'll detect and tell you if the 
 
 ```json
 {
-  "risk":true,
   "status":"success",
-  "value":"0.8849344"
+  "value":"92",
+  "risk":true,
 }
 ```
 
 **status** : If any error occured in backend it will say error else it will be set to success. <br>
-**risk** : boolean value which says if the risk of heart disease is high ( default threshold is 75% ) <br>
-**value** : Confidence measure of the AI Model.
+**value** : Confidence measure of the AI Model. <br>
+**risk** : boolean value which says if the risk of heart disease is high ( default threshold is 75% ) 
+
 
 # Installation of WebApp.
 
