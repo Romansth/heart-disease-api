@@ -7,7 +7,7 @@ This repository contains source code of our project for Provathon.  Heart Diseas
 # Description
 
 Our solution is based on microservices architecture and the AI Model can be independently used in any other platform with ease. We've also included a simple demo hospital management system to show how the API works and how you can use our AI Model an web app together.
-Whenever you submit your data to our AI Model, it'll detect and tell you if it's offensive or not.
+Whenever you submit your data to our AI Model, it'll detect and tell you if the patient has the risk of heart disease.
 
 ## Technical Aspect
 
