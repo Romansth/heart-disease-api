@@ -51,7 +51,7 @@ python manage.py
 ## Step 2: Installation of AI Model
 
 ```bash
-cd heart-disease-api/AI_Models
+cd heart-disease-api/api
 pip install flask pickle numpy flask-cors
 python Deployed_Flask_App.py
 ```
