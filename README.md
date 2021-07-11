@@ -19,9 +19,9 @@ In similar way, our api can be integrated with any smart watches, hospital manag
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" width=100>
 <img src="https://cms-assets.tutsplus.com/uploads/users/1251/posts/28278/preview_image/chartjs-tutsplus.jpg" width=100>
 
-```
 
-### Response
+
+## Response
 
 ```json
 {
