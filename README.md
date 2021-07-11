@@ -8,7 +8,7 @@ This repository contains source code of our project for Provathon.  Heart Diseas
 
 Our solution is based on microservices architecture and the AI Model can be independently used in any other platform with ease. We've also included a demo dashboard of our smart watch simulator where we can receive patient's real time health data directly from his smart watch and use those value to get a realtime prediction  of immediate risks of heart attacks in a patient. This real time prediction is  also simulated in a continuous graph to warn the patients in case of any risks.<br>
 In similar way, our api can be integrated with any smart watches, hospital management system, health apps to get a real time prediction of immediate risks of heart attacks.
-<img src="![image](https://user-images.githubusercontent.com/53575561/125182122-0331d280-e22b-11eb-8629-ef57e69a8a2f.png)">
+<img src="https://media.discordapp.net/attachments/862925813989244930/863626429774430228/unknown.png?width=1098&height=618">
 
 
 ## Technical Aspect
