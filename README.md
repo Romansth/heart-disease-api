@@ -36,7 +36,9 @@ In similar way, our api can be integrated with any smart watches, hospital manag
 **risk** : boolean value which says if the risk of heart disease is high ( default threshold is 75% ) 
 
 
-# Installation of WebApp.
+# Installation and Test on Local Machine
+
+## Step 1: Installation of WebApp.
 
 ```bash
 git clone https://github.com/Romansth/heart-disease-api.git
@@ -45,15 +47,22 @@ pip install django requests numpy pickle django-cors-headers
 python manage.py
 ```
 
-After running these commands, the blog will be hosted and you will be ready to test the endpoint.
 
-# Installation of AI Model
+## Step 2: Installation of AI Model
 
 ```bash
 cd heart-disease-api/AI_Models
 pip install flask pickle numpy flask-cors
 python Deployed_Flask_App.py
 ```
-After running these commands, the AI Model will be hosted on your machine. And you can go to /predict/<data> to test your endpoint.
+## Step 3:  Run Smartwatch Simulator
+
+```bash
+cd heart-disease-api
+python smartwatch_simulator.py
+```
+## Step 4: Go to heart-disease-api/frontend and open index.html
+
+After following all these steps, the demo app will successfully run on your local machine.
 
 Feel free to contribute !
