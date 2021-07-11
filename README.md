@@ -6,13 +6,15 @@ This repository contains source code of our project for Provathon.  Heart Diseas
 
 # Description
 
-Our solution is based on microservices architecture and the AI Model can be independently used in any other platform with ease. We've also included a simple demo hospital management system to show how the API works and how you can use our AI Model on a web app together.
-Whenever you submit your data to our AI Model, it'll detect and tell you if the patient has the risk of heart disease.
+Our solution is based on microservices architecture and the AI Model can be independently used in any other platform with ease. We've also included a demo dashboard of our smart watch simulator where we can receive patient's real time health data directly from his smart watch and use those value to get a realtime prediction  of immediate risks of heart attacks in a patient. This real time prediction is  also simulated in a continuous graph to warn the patients in case of any risks.<br>
+In similar way, our api can be integrated with any smart watches, hospital management system, health apps to get a real time prediction of immediate risks of heart attacks.
 
 ## Technical Aspect
 
 <img src="https://d1.awsstatic.com/logos/aws-logo-lockups/poweredbyaws/PB_AWS_logo_RGB.61d334f1a1a427ea597afa54be359ca5a5aaad5f.png" width=100>  <img src="https://www.devteam.space/wp-content/uploads/2017/03/dockericon-min.png" width=100> <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Flask_logo.svg" width=100>
+<img src="https://static.djangoproject.com/img/logos/django-logo-negative.png" width=100>
 <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" width=100>
+<img src="https://cms-assets.tutsplus.com/uploads/users/1251/posts/28278/preview_image/chartjs-tutsplus.jpg" width=100>
 
 ### Endpoint of AI Model ( Remote )
 ```
@@ -38,9 +40,9 @@ Whenever you submit your data to our AI Model, it'll detect and tell you if the 
 
 ```bash
 git clone https://github.com/Romansth/heart-disease-api.git
-cd heart-disease-api/WebApp
-pip install flask requests numpy pickle
-python app.py
+cd heart-disease-api/backend
+pip install django requests numpy pickle
+python manage.py
 ```
 
 After running these commands, the blog will be hosted and you will be ready to test the endpoint.
