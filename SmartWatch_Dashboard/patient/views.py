@@ -46,3 +46,5 @@ def changeHeartBeat(request, heartBeat):
     patient.save()
     return HttpResponse("ok")
 
+def dashboard(request):
+    return render(request,'index.html')

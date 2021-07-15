@@ -7,5 +7,8 @@ urlpatterns = [
     path("info" , views.getPatient),
     path("get" , views.getHeartBeat),
     path("bp/<str:bp>", views.changeBP),
-    path("heart-rate/<str:heartBeat>", views.changeHeartBeat)
+    path("heart-rate/<str:heartBeat>", views.changeHeartBeat),
+    path("", views.dashboard),
+    
 ]
+
