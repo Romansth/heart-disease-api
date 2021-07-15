@@ -42,9 +42,9 @@ In similar way, our api can be integrated with any smart watches, hospital manag
 
 ```bash
 git clone https://github.com/Romansth/heart-disease-api.git
-cd heart-disease-api/backend
+cd heart-disease-api/SmartWatch_Dashboard
 pip install django requests numpy pickle django-cors-headers 
-python manage.py
+python manage.py runserver
 ```
 
 
@@ -61,7 +61,7 @@ python Deployed_Flask_App.py
 cd heart-disease-api
 python smartwatch_simulator.py
 ```
-## Step 4: Go to heart-disease-api/frontend and open index.html
+## Step 4: Go to localhost:8000/patient
 
 After following all these steps, the demo app will successfully run on your local machine.
 
