@@ -28,6 +28,7 @@ def updateDetails(request):
         username = request.POST.get("username")
         if username: 
             user = Patient.objects.filter(username=username).first()
+            print(user)
             if user:
                 user.sex = int(request.POST["sex"])
                 user.chestpain = int(request.POST["chestpain"])
@@ -49,14 +50,16 @@ def getPatient(request):
     ret = {"info": patient}
     qs = serializers.serialize("json", patient)
     ret["info"] = json.loads(qs)
-
-    if patient.first().sex > -1:
-        if patient.first().heartbeats > 0 and patient.first().blood_pressure > 0:
-            ret["status"] = "200"
+    if patient.exists():
+        if patient.first().sex > -1:
+            if patient.first().heartbeats > 0 and patient.first().blood_pressure > 0:
+                ret["status"] = "200"
+            else:
+                ret["status"] = "hrErr"  
         else:
-            ret["status"] = "hrErr"  
+            ret["status"] = "404"
     else:
-        ret["status"] = "404"
+        return redirect("/")
 
     qs = json.dumps(ret)
     return HttpResponse(f"{qs}", content_type="application/json")
@@ -69,16 +72,24 @@ def getPatient(request):
 
 @csrf_exempt
 def changeBP(request, bp):
-    username = json.loads(request.body)["username"]
-    patient = Patient.objects.get(username=username)
+    username = json.loads(request.body).get("username")
+    patient = Patient.objects.filter(username=username)
+    if patient.exists():
+        patient = patient.first()
+    else:
+        return HttpResponse("Error")
     patient.blood_pressure = float(bp)
     patient.save()
     return HttpResponse("ok")
 
 @csrf_exempt
 def changeHeartBeat(request, heartBeat):
-    username = json.loads(request.body)["username"]
-    patient = Patient.objects.get(username=username)
+    username = json.loads(request.body).get("username")
+    patient = Patient.objects.filter(username=username)
+    if patient.exists():
+        patient = patient.first()
+    else:
+        return HttpResponse("Error")
     patient.heartbeats = float(heartBeat)
     patient.save()
     return HttpResponse("ok")
