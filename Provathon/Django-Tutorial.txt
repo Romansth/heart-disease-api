@@ -1,0 +1,314 @@
+---SETUPS:---
+
+SETTING VIRTUAL ENVIRONMENT:
+
+Installation:
+pip install virtualenvwrapper-win
+
+Create virtual environment:
+mkvirtualenv <name of environment>
+
+Note: While working in virtual environment make sure the command prompt is 
+      in this format:
+      (virtual environment name)destination where prompt is open
+      If it is not then simply type  workon <name of environment>
+
+
+Note: 
+Q. Why virtual environment?
+A. If you work on multiple projects and want different django configurations for 
+   different projects so then you can create virtual environment for each projects 
+   with different configurations. But you have to download django in every virtual 
+   envronment.
+
+
+SETTING UP DJANGO:
+
+Installation:
+pip install django
+
+Creating new project:
+django-admin startproject <project name>
+Note:   Every django commands start with django-admin
+Note2:  When you create a new project you get 1 folder named same as your project name 
+	and a manage.py.
+        manage.py has many functions which helps to run the server.
+        One of them is runserver which starts your server.
+        inside 1st folder there will be a urls.py where 
+        you will have to link all the apps you make
+        next there will be a settings.py which you will change very less
+        but you need it. Aru ta baal bhayena.  
+
+Creating new app:
+django-admin startapp <app name>
+
+Note:   Every app you make must be registerd in INSTALLED APPS section/list 
+        inside settings.py.
+Note2:  Inside the app there will be views.py and you have to create urls.py. 
+	insde views.py all the technical stuffs will be written
+	inside urls.py you will link all the urls of your app
+
+Adding templates/webpages:
+1. Create a templates(or any other name) folder in root directory where you have 
+   your app and main folder
+2. Go to settings, scroll-down to templates, 
+   edit 'DIRS' as 'DIRS':[os.path.join('path_to_template_folder' or 
+   'BASE_DIR' without quotation if it is in base directory, 'folder_name')],
+
+Adding static files:
+1) Create a folder containing all the static files inside base directory.
+
+2) Goto settings, scroll to bottom, and below STATIC_URL='/static/' add
+   STATICFILES_DIRS=[
+	os.path.join(folder_location, 'static_folder_name'),
+   ]
+   Note: folder_location is the path to the static_folder so use the path 
+	of the folder inside quotation instead folder_location or write BASE_DIR if it
+	is in base directory
+
+   STATIC_ROOT = os.path.join(folder_location, 'folder_name')
+   Note: folder_location is the place where you want to save the static files created 
+	by django and folder_name is the name of the static folder created by django
+   
+3) Open command prompt and type python manage.py collectstatic 
+   Note: This will convert your static folder to django static folder
+
+4) Goto your HTML file and at the beginning type {%load static%}
+   and infront of every links like css, js, imgs, plugins type {%static 'initial_path' %}
+   Example: href= " {% static 'css/home-style.css' %} "
+
+Q. What if F is going on here?
+A. Basically django is taking the folder where you saved all the static files 
+   and converting it to django static folder which is used in websites.
+
+Connecting to SQL:
+1) Get your DBMS ready and running.
+2) Goto settings.py scroll down to DATABASES and inside DATABASES there will be default
+   and inside default change engine as 'ENGINE':'django.db.backends.your_sql_name',
+   and 'NAME': '<your_table_name>',
+   then add following:
+   'USER': '<your_username>',
+   'PASSWORD':'<your_password>',
+   'HOST':'<ip_address_of_the_device_where_DBMS_is_installed if it is in your own 
+	   comp type localhost>'
+   'PORT':'<port no of database>'
+3)Make sure you have the adaptper installed.Eg: for postgres use pstcopg2 for mysql 
+  use mysql-connector
+
+Making migrations:
+1) Inside models.py of app and import models from django.db and create a class
+2) Goto cmd prompt and type python manage.py makemigrations. 
+3) The previous command made a migration file to inside migration folder of app. 
+   It should be like: <number>_initial.py the number is the number of migration file
+4) Now open cmd prompt and type:
+   python manage.py sqlmigrate <app_name> <number of migration file>
+5) The above command made a tabel inside database to send data type:
+   python manage.py migrate
+
+Adding app to INSTALLED APPS:
+1) Goto settings.py and scroll down to Installed apps. Then inside INSTALLED_APPS=[...]:
+   add '<your app name>', at the bottom
+
+THINGS TO INSTALL USING PIP:
+-django
+-pylint
+-pillow(if you want to work with pictures in databases)
+
+---SETUP FINISHED---
+
+THINGS TO IMPORT MANUALLY:
+inside app's urls.py:
+- (to set path)
+-from . import views(. means base directory)
+inside main urls.py:
+-from django.urls import path,include
+inside app's models.py:
+-from django.db import models
+inside views.py of app
+-from .models import <class name>
+-from django.shortcuts import render, redirect
+-from django.contrib.auth.models import User, auth
+
+
+SYNTAXES:
+
+1) To set url in apps:
+urlpatterns = [path('/xyz', destination, name = 'anything'),]
+Note:   this syntax means that if some one types your_domain/your_app_name folllowed 
+	by the thing mentioned after '/' then go to the place mentioned 
+	as destination.(generally the destionation is like views.function_name)
+
+2) To set url in main folder:
+urlpatterns=[
+	path('/admin', admin.site.urls),
+	path('destination eg: '' for homepage', include('your_app_name.urls')),
+]
+Note:   this syntax means that if some one types your_domain folllowed by destination
+	then go to the place mentioned inside include() function.
+
+3) Creating functions in app's views.py:
+def function_name(request):
+	blah blah blah
+
+4) Creating class in app's models.py:
+class class_name(models.Model)
+column_heading:type
+Note: The name of the class will be the name of the tabel in database
+Note: To know about the types for every data refer to:
+      https://docs.djangoproject.com/en/3.0/ref/models/feilds/
+      or simply search django model feilds
+      Some general feilds:
+      characters= models.CharFeild(max_length=any_number)
+      long_text= models.TextFeild()
+      integer= models.IntegerField()
+      boolean= modesl.BooleanFeild(default=True/False<default parameter is not compulsary>)
+      image= models.ImageFeild(upload_to='<folder_name>'<upload-to is not compulsary>)
+
+5) Calling HTML file:
+return render(request, 'html_name.html', data_to_pass)
+Note: data_to_pass is not a compulsary argument to pass.
+format of data to pass:
+    {'variable_name':value}
+    then in html file it can be accessed by:
+    {{varaible_name}}
+Example: 
+    In python file: {'name':'Prasun'}
+    In html file: <h1>Hello {{name}}</h1>
+
+6) Accept values enter in html:
+Theory: There are 2 methods of submitting data: POST and GET
+	GET: This means user is asking for data and is shown on address bar
+	POST: This means user is giving us data and is hidden from address bar
+	To accept value from html there should be a name given to the data
+	And to access it:
+	variable_to_store_data = request.method_name(either GET or POST)['name_given_to_data']
+Note:   When sending data form forms add a token {% csrf_token %} insode form tag 
+	to prevent CSRF attack.
+
+7) Creating account/registering login and logout:
+Theory: While creating a new server in sql, SQL will automaticall create a table
+	named as auth_user. We can store users login data inside that table. However,
+	you can create your own new tabel and add users there. But using auth_user make 
+	registration way more easier. It will also make the verification of the user, 
+	user login and user loguot easier.
+	
+	Syntax for creating:
+	user= User.objects.create_user(username=<username of user>, password=<password>
+	email=<email of user>...)
+	user.save()
+
+	Note:   passing username and passowrd is must and there are others options like
+		email, firstname, lastname, superuser, last-login, date of account created etc.
+
+	Syntax for verifying:
+	User.objects.filter(tabel_column=to_check).exists()
+	
+	Note:   This syntax returns a boolean value after checking the the tabel columns
+ 		with the provided value. Eg: User.objects.filter(username='Prasun').exists()
+		this will check if there is a data 'Prasun' in username column. If 
+		it is there it will return true
+
+	Syntax for login:
+	user = auth.authentcate(username=<username_provided_by_user>, password=<password_provided_by_user>)
+	If user is not None:
+		auth.login(request,user)
+	
+	Note:   Here firstly it is checking if the provided username and passwords are
+	        correct or not. If it is incorrect ot will return none and if user
+		it is correct then it will return an object. So we are checking if 
+		user is not None that means it's an object and user has provided
+		correct value.
+
+	Syntax for logout:
+	auth.logout(request)
+	Note: This will log the user out who is requesting this service. Hyaa baal 
+	ho j bhaye ni logout hunxa bhaihalyo ni.
+
+8) Checking users authentication in HTML:
+
+{user.is_authenticate}
+Note:   To use it you must pass the user object in HTML. You can user other datas like
+	user.firstname, user.lastname, user.email etc.
+
+9) Insert, Update, Delete and Fetch data from database:
+There are two ways of performing such actions. 
+If you want to fetch data from the databse which you mentioned in django settings.py 
+then you can simply import <class name> from .models and use commands like:
+
+1) <class name>.objects.all(): To fetch all the data from table.
+1.1) <class name>.objects.filter(): To fetch all the data from table.
+2) <class name>.objects.create(<column name>=<value>): Creates a record in database
+2.1) variable = <classname>(<column>=<value>)
+     variable.save()			     : Creates a record in database
+     Eg: table = my_table(name='Prasun', age=16)
+3) <class name>.objects.get(<column name>=<value>): Gets the row where the column value
+   matches with row value. Eg: me = my_tabel.objects.get(name='Prasun'). This will return 
+   a row where name is 'Prasun' and stores it in me variable.
+4) The above statement will return an error if there are more than one outputs. In the 
+   above example if there are two record with name Prasun it will return an error. So in
+   this case we use filter:
+   <class name>.objects.filter(<column name>=<value>)
+   Filter can accept more than one argument. Meaning you can pass more than one 
+   column name and value and Django's feild lookups to be more presice about you serach.
+   Eg: my_table.objects.filter(name='Prasun', age=16, surename__contains='S') 
+5) <record object>.<feild>=<value>
+   <record object>.save()	  : This will update te data
+   Note: To get the record object we can use command 3 or 4
+   Eg:1) record1 = my_table.objects.filter(name='Prasun')
+	 record1.name='Prasun Shiwakoti'
+	 record1.save()
+      2) my_table.objects.filter(name='Prasun').update(name='Prasun Shiwakoti')
+6) <class name>.objects.all().delete(): to delete all the record form the table
+6.1) <class name>.objects.filter(<column name>=<value>).delete(): to delete specific records
+
+Note:   commands 3,4 returns a object which can be converted to string using
+	__str__ function.
+  
+
+Firstly you need to make a connection and this is a basic outline for connection:
+
+import pymysql as mysql 
+OR
+import mysql.connector as mysql
+
+connection= mysql.connect(
+	host= 'localhost',
+	user= '<your username>',
+	password='<your password>',
+	database='<database server name>',
+	auth_plugin='mysql_native_password',
+)
+Note: This will create connection between python and mysql
+
+mycursor=connection.cursor()
+Note: This cursor will allow the user to fire queries
+
+mycursor.execute(<mysql query>)
+result = mycursor.fetchall()
+OR 
+result = mycursor.fetchone()
+connection.commit()
+connect.close()
+
+Note:   Fetch all will extract all the data at once which can be bad when you have a lot
+	of data in you tabel. Your server may slow down. 
+	So in that case use a for loop and inside for loop use fetchone.
+	That commit line will make change in DBMS table
+	And you must always close a connection after your work is done else there
+	is a chance of crashing and losing data.
+
+SQL Queries:
+
+1) select * from <tabel name>: Shows all the data of the tabel
+   Note: Here * means all you can also write specific column name to get specific column.
+
+2) INSERT INTO names(<column_names>) VALUES(<data_to_insert>);: Inserts data in tabel
+   Eg: INSERT INTO names(name, password) VALUES('Prasun', '1234');
+
+3) DELETE FROM <tabel name> WHERE <condition>;: Deletes the record if condition is satisfied
+   Eg: DELETE FROM my_table WHERE name='Prasun';
+
+4) UPDATE <tabelname> SET <columnname> = <value> WHERE <condition>;: Changes the requested 
+   data if the condition is satisfied
+   Eg: UPDATE my_table SET name = 'Prasun' WHERE id = 3;
+
