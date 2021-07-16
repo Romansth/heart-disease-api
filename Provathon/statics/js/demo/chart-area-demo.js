@@ -124,7 +124,12 @@ setInterval(() => {
         })
 
       }else{
-        document.getElementById("risk").innerText = "Please enter your health details first"
+        if (data.status == "hrErr"){
+          document.getElementById("risk").innerText = "Please Connect your smartwatch"
+        }
+        else{
+          document.getElementById("risk").innerText = "Please provide your health details"
+        }
       }
     })
 

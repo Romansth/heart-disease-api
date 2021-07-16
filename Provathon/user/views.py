@@ -63,3 +63,4 @@ def addPatient(request):
     if not Patient.objects.filter(username=request.user.username).exists():
         patient = Patient.objects.create(username=request.user.username)
         patient.save()
+    return redirect("/")

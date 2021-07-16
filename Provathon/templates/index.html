@@ -465,7 +465,7 @@
                 <!-- Card Body -->
                 <form class="card-body" id="details" action="{% url 'updateDetails' %}" method="POST" >
                   {% csrf_token %}
-                  <input type="hidden" name="username" value="Prasun"><!-- {{user.username}} -->
+                  <input type="hidden" name="username" value="{{user.username}}">
 
                   <label for="" class="ml-2">Sex</label>
                   <select name="sex" id="sex" class="form-control" required>

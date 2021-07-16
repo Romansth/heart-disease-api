@@ -52,7 +52,12 @@ fetch("http://127.0.0.1:8000/patient/info", {
         }
       }
     } else {
-      document.getElementById("risk").innerText = "Please enter your health details first"
+      if (data.status == "hrErr"){
+        document.getElementById("risk").innerText = "Please Connect your smartwatch"
+      }
+      else{
+        document.getElementById("risk").innerText = "Please provide your health details"
+      }
     }
   })
 
@@ -119,7 +124,12 @@ setInterval(() => {
         })
 
       }else{
-        document.getElementById("risk").innerText = "Please enter your health details first"
+        if (data.status == "hrErr"){
+          document.getElementById("risk").innerText = "Please Connect your smartwatch"
+        }
+        else{
+          document.getElementById("risk").innerText = "Please provide your health details"
+        }
       }
     })
 
