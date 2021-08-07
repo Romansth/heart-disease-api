@@ -52,7 +52,12 @@ fetch("http://127.0.0.1:8000/patient/info", {
         }
       }
     } else {
-      document.getElementById("risk").innerText = "Please enter your health details first"
+      if (data.status == "hrErr"){
+        document.getElementById("risk").innerText = "Please Connect your smartwatch"
+      }
+      else{
+        document.getElementById("risk").innerText = "Please provide your health details"
+      }
     }
   })
 
@@ -76,7 +81,7 @@ setInterval(() => {
         bloodEl.innerText = patient.blood_pressure
 
         datas = [patient.sex, patient.chestpain, patient.blood_pressure, patient.cholestorol, patient.heartbeats, patient.angina, patient.st_depression, patient.slope, patient.major_vessels, patient.thalassemia]
-        fetch("http://127.0.0.1:8000/patient/predict", {
+        fetch("http://127.0.0.1:8001/predict", {
           method: 'POST',
           body: JSON.stringify(datas.concat(document.getElementsByName("username")[0].value)),
           headers: {
