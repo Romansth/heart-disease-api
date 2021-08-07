@@ -52,12 +52,7 @@ fetch("http://127.0.0.1:8000/patient/info", {
         }
       }
     } else {
-      if (data.status == "hrErr"){
-        document.getElementById("risk").innerText = "Please Connect your smartwatch"
-      }
-      else{
-        document.getElementById("risk").innerText = "Please provide your health details"
-      }
+      document.getElementById("risk").innerText = "Please enter your health details first"
     }
   })
 
@@ -81,18 +76,18 @@ setInterval(() => {
         bloodEl.innerText = patient.blood_pressure
 
         datas = [patient.sex, patient.chestpain, patient.blood_pressure, patient.cholestorol, patient.heartbeats, patient.angina, patient.st_depression, patient.slope, patient.major_vessels, patient.thalassemia]
-        fetch("http://127.0.0.1:8001/predict", {
+        fetch("http://18.215.165.176:8081/predict", {
           method: 'POST',
           body: JSON.stringify(datas.concat(document.getElementsByName("username")[0].value)),
           headers: {
             'Content-type': 'application/json'
           }
 
-        }).then(res => res.json()).then(data => {
-          console.log(data)
+        }).then(response => response.json()).then(response => {
+          console.log(response)
           const date = new Date();
           const label = date.toTimeString().split(" ")[0]
-          const value = parseFloat(data)
+          const value = parseFloat(response)
 
           // let label = "8:35"
           // let value = 30  
