@@ -22,6 +22,7 @@ In similar way, our api can be integrated with any smart watches, hospital manag
 
 
 ## Response
+API Endpoint: http://18.215.165.176:8081/predict
 
 ```json
 {
